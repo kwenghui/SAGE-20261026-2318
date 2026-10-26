@@ -1,0 +1,18 @@
+# Tool settings only (Sage is run with Streamlit, not installed as a package).
+
+[tool.ruff]
+target-version = "py312"
+line-length = 100
+extend-exclude = ["data", "questions", "reports"]
+
+[tool.ruff.lint]
+# Errors that CI blocks on are selected in .github/workflows/security.yml.
+# This wider set is reported (advisory) by the same workflow.
+select = ["E", "F", "W", "B", "S", "SIM", "PL", "UP"]
+ignore = [
+    "PLR0911", "PLR0912", "PLR0913", "PLR2004",   # complexity is tracked by the behaviour checks
+    "S101",                                        # assert is used only in tests
+]
+
+[tool.ruff.format]
+quote-style = "preserve"     # keep the existing quotes: formatting changes only layout
